@@ -3,12 +3,20 @@ import menu from "../utils/images/menu.png";
 import logo from "../utils/images/logo.png";
 import userIcon from "../utils/images/user.png";
 import searchIcon from "../utils/images/search.png";
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../utils/appSlice";
 
 const Head = () => {
+
+  const dispatch = useDispatch()
+
+  const toggleHandler  = () => {
+    dispatch(toggleMenu())
+  }
   return (
     <div className="grid grid-flow-col p-5 m-2 shadow-xl">
       <div className="flex col-span-1 ">
-        <img alt="menu" src={menu} className="h-8" />
+        <img alt="menu" onClick={() => toggleHandler()} src={menu} className="h-8 cursor-pointer" />
         <img alt="logo" src={logo} className="h-8 ml-5" />
       </div>
       <div className="col-span-10 flex justify-center">
