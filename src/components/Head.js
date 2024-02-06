@@ -1,8 +1,8 @@
 import React from "react";
-import menu from "../utils/menu.png";
-import logo from "../utils/logo.png";
-import userIcon from "../utils/user.png";
-import searchIcon from "../utils/search.png";
+import menu from "../utils/images/menu.png";
+import logo from "../utils/images/logo.png";
+import userIcon from "../utils/images/user.png";
+import searchIcon from "../utils/images/search.png";
 
 const Head = () => {
   return (
