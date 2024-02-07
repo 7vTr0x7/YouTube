@@ -7,16 +7,21 @@ import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 
 const Head = () => {
+  console.log(`${process.env.REACT_APP_V}`);
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-
-  const toggleHandler  = () => {
-    dispatch(toggleMenu())
-  }
+  const toggleHandler = () => {
+    dispatch(toggleMenu());
+  };
   return (
     <div className="grid grid-flow-col p-5 m-2 shadow-xl">
       <div className="flex col-span-1 ">
-        <img alt="menu" onClick={() => toggleHandler()} src={menu} className="h-8 cursor-pointer" />
+        <img
+          alt="menu"
+          onClick={() => toggleHandler()}
+          src={menu}
+          className="h-8 cursor-pointer"
+        />
         <img alt="logo" src={logo} className="h-8 ml-5" />
       </div>
       <div className="col-span-10 flex justify-center">
