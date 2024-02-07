@@ -20,22 +20,22 @@ const Head = () => {
           alt="menu"
           onClick={() => toggleHandler()}
           src={menu}
-          className="h-8 cursor-pointer"
+          className="h-8 cursor-pointer "
         />
         <a href="/">
-          <img alt="logo" src={logo} className="h-8 ml-5" />
+          <img alt="logo" src={logo} className="h-8 ml-5  " />
         </a>
       </div>
-      <div className="col-span-10 flex justify-center">
+      <div className="col-span-10 flex justify-center m-0">
         <input
-          className="w-1/2 border border-gray-400 p-2 rounded-l-full"
+          className="w-1/2 border h-9 border-gray-400 p-1 rounded-l-full"
           type="text"
         />
 
         <img
           alt="search"
           src={searchIcon}
-          className="h-11 border border-gray-400  rounded-r-full py-2 px-5"
+          className="h-9 border border-gray-400  rounded-r-full py-2 px-5"
         />
       </div>
       <div className="col-span-1">
