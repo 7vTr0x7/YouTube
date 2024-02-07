@@ -22,7 +22,9 @@ const Head = () => {
           src={menu}
           className="h-8 cursor-pointer"
         />
-        <img alt="logo" src={logo} className="h-8 ml-5" />
+        <a href="/">
+          <img alt="logo" src={logo} className="h-8 ml-5" />
+        </a>
       </div>
       <div className="col-span-10 flex justify-center">
         <input
