@@ -5,11 +5,26 @@ import userIcon from "../utils/images/user.png";
 import searchIcon from "../utils/images/search.png";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { YT_SEARCH_API } from "../utils/constants";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
+  useEffect(() => {
+    // make the api can on every key stroke
+    // but decline api call if difference between 2 api calls < 200ms
 
+    const timer = setTimeout(() => getSearchSuggestion(), 200);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
+
+  const getSearchSuggestion = async () => {
+    const data = await fetch(YT_SEARCH_API + searchQuery);
+    const json = await data.json();
+    console.log(json[1]);
+  };
 
   const dispatch = useDispatch();
 
