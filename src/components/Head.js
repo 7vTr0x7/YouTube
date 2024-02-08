@@ -3,20 +3,27 @@ import menu from "../utils/images/menu.png";
 import logo from "../utils/images/logo.png";
 import userIcon from "../utils/images/user.png";
 import searchIcon from "../utils/images/search.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YT_SEARCH_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
 
-  useEffect(() => {
-    // make the api can on every key stroke
-    // but decline api call if difference between 2 api calls < 200ms
+  const searchCache = useSelector((store) => store.search);
+  const dispatch = useDispatch();
 
-    const timer = setTimeout(() => getSearchSuggestion(), 200);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestion();
+      }
+    }, 200);
     return () => {
       clearTimeout(timer);
     };
@@ -28,9 +35,13 @@ const Head = () => {
     const json = await data.json();
     // console.log(json[1]);
     setSuggestions(json[1]);
-  };
 
-  const dispatch = useDispatch();
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
+  };
 
   const toggleHandler = () => {
     dispatch(toggleMenu());
@@ -51,7 +62,7 @@ const Head = () => {
 
       <div className="col-span-10 flex justify-center  m-0">
         <input
-          className="w-1/2 border h-9 border-gray-400 p-1 rounded-l-full"
+          className="w-1/2 border h-9 border-gray-400 p-1 px-5 font-semibold rounded-l-full"
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
