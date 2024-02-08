@@ -1,0 +1,16 @@
+
+
+
+  # Debouncing 
+    
+    - typing slow - 200ms
+    - typing fast - 30ms
+
+    - performance
+       - iphone pro max -> 14 latter (14 API calls) * 1000 user = 14000 api calls
+       - with debouncing -> 3 API calls * 1000 user = 3000 API calls
+
+
+    - Debouncing with 200ms
+      - if difference between 2 key strokes is < 200ms -> decline api call
+      - if > 200ms make an api call  
