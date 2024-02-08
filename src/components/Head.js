@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import menu from "../utils/images/menu.png";
 import logo from "../utils/images/logo.png";
 import userIcon from "../utils/images/user.png";
@@ -7,6 +7,10 @@ import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 
 const Head = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+
+
   const dispatch = useDispatch();
 
   const toggleHandler = () => {
@@ -29,6 +33,8 @@ const Head = () => {
         <input
           className="w-1/2 border h-9 border-gray-400 p-1 rounded-l-full"
           type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
 
         <img
