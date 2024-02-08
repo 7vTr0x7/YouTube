@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 
 const Head = () => {
-  console.log(`${process.env.REACT_APP_V}`);
   const dispatch = useDispatch();
 
   const toggleHandler = () => {
