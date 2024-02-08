@@ -9,6 +9,8 @@ import { YT_SEARCH_API } from "../utils/constants";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestion, setShowSuggestion] = useState(false);
 
   useEffect(() => {
     // make the api can on every key stroke
@@ -21,9 +23,11 @@ const Head = () => {
   }, [searchQuery]);
 
   const getSearchSuggestion = async () => {
+    console.log("API calls - " + searchQuery);
     const data = await fetch(YT_SEARCH_API + searchQuery);
     const json = await data.json();
-    console.log(json[1]);
+    // console.log(json[1]);
+    setSuggestions(json[1]);
   };
 
   const dispatch = useDispatch();
@@ -44,12 +48,15 @@ const Head = () => {
           <img alt="logo" src={logo} className="h-8 ml-5  " />
         </a>
       </div>
-      <div className="col-span-10 flex justify-center m-0">
+
+      <div className="col-span-10 flex justify-center  m-0">
         <input
           className="w-1/2 border h-9 border-gray-400 p-1 rounded-l-full"
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onFocus={() => setShowSuggestion(true)}
+          onBlur={() => setShowSuggestion(false)}
         />
 
         <img
@@ -57,7 +64,27 @@ const Head = () => {
           src={searchIcon}
           className="h-9 border border-gray-400  rounded-r-full py-2 px-5"
         />
+
+        {showSuggestion && (
+          <div className="absolute  bg-white justify-start mt-10  w-[34rem] shadow-xl rounded-xl border border-gray-200">
+            <ul className="my-3">
+              {suggestions.map((suggestion) => (
+                <li
+                  key={suggestion}
+                  className="flex  hover:bg-gray-300 px-5 py-1 cursor-default">
+                  <img
+                    alt="search"
+                    src={searchIcon}
+                    className="h-4 mt-1 mr-4 "
+                  />
+                  {suggestion}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
+
       <div className="col-span-1">
         <img alt="user" src={userIcon} className="h-8" />
       </div>
