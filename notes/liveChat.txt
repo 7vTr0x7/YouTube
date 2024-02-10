@@ -1,0 +1,24 @@
+
+ 
+
+   # Live Chat
+     
+      - Challenges
+        -> Data layer - get live Data
+        -> UI layer - update the UI (live)
+
+
+      - live Data 
+
+        -> Web socket ( UI <-------> Server )
+           - UI and connect with each and can send data to each other
+           - initial connection takes time 
+           - once connection is established we can send data in any direction and whenever we want to
+           - there is no regular interval ( data can come in anytime it can take 1min,2mins or 10mins )
+           - ex. trading apps, whats app
+
+        -> API Polling  ( UI <------- Server )
+           - Data is uni-directional 
+           - UI will keep polling data after interval ( 1sec or 10sec )
+           - on every interval ( 1sec or 10sec ) it check if data has came or not
+           - Gmail, cricbuzz, YT live chat
