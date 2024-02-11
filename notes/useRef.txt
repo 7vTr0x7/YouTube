@@ -2,6 +2,6 @@
 
 
   # useRef
-    - useRef is a react hook that lets you reference a value that's not needed re-rendering
+    - useRef is a react hook that lets you reference a value that's not needed rendering
 
-    - It is used to store a value in value that we don't want to re-render 
+    - It is used to store a value in value that we don't want to render

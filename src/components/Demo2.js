@@ -7,7 +7,7 @@ const Demo2 = () => {
     <div className="w-96 h-96 p-4 m-4 bg-gray-50 border border-black ">
       <div className="flex">
         <button
-          className="bg-gray-100 rounded-xl p-3 ml-2"
+          className="bg-gray-100 rounded-xl p-3 m-2"
           onClick={() => {
             x = x + 1;
             console.log(x);
@@ -18,7 +18,7 @@ const Demo2 = () => {
       </div>
       <div className="flex">
         <button
-          className="bg-gray-100 rounded-xl p-3 ml-2"
+          className="bg-gray-100 rounded-xl p-3 m-2"
           onClick={() => setY(y + 1)}>
           INC Y
         </button>
