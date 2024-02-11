@@ -5,3 +5,9 @@
     - useRef is a react hook that lets you reference a value that's not needed rendering
 
     - It is used to store a value in value that we don't want to render
+
+    - useRef helps us to store the value that we don't want to be reset because of re-render
+      - components are JS functions that return a JSX 
+        - on every render these functions are new ( because they get destroyed from execution context )
+          - because of this normal variables are reset 
+    - To prevent this reset of variable and store its value or make its value persistent even after re-render we use useRef       
