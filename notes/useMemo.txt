@@ -1,0 +1,6 @@
+
+
+
+  # useMemo
+    - If we have some heavy operations in our component and every time the state changes those operations will happen
+    - We can memoize the operations
