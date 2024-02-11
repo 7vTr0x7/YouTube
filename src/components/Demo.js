@@ -10,7 +10,7 @@ const Demo = () => {
   return (
     <div
       className={`w-96 h-96 p-4 m-4 bg-gray-50 border border-black ${
-        isDarkMode && "bg-gray-950 text-white"
+        isDarkMode && "bg-gray-950"
       }`}>
       <button
         className="bg-gray-100 rounded-xl font-semibold p-2 m-2 "
